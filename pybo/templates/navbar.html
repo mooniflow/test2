@@ -1,36 +1,32 @@
+<!-- 네비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('main.index') }}">에티버스타임</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">Pybo</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <!-- 카테고리 목록 -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        카테고리
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ url_for('category.category1')}}">취업 게시판</a>
-                        <a class="dropdown-item" href="{{ url_for('category.category2')}}">자유 게시판</a>
-                    </div>
-                </li>
-                {% if g.user %}
+            {% if g.user %}
+            <ul class="navbar-nav">
                 <li class="nav-item ">
                     <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
                 </li>
-                {% else %}
+            </ul>
+            {% else %}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
                 </li>
-                {% endif %}
             </ul>
+            {% endif %}
         </div>
     </div>
 </nav>
